@@ -93,7 +93,7 @@ export const CardProfile: React.FC<ICardProfileProps> = ({ className }) => {
     return (
         <CardProfileStyled className={className}>
             <ProfileContainer>
-                <ProfileImage src={image} />
+                <ProfileImage src={image} alt={name} />
                 <div>
                     Report for <ProfileName>{name}</ProfileName>
                 </div>

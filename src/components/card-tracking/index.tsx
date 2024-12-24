@@ -202,7 +202,7 @@ export const CardTracking: React.FC<TCardProps> = memo(({ card }) => {
             <CardContent>
                 <CardHeading>
                     <span>{title}</span>
-                    <MenuButton />
+                    <MenuButton title="Activity menu" />
                 </CardHeading>
                 <div data-value="daily">
                     <h2>{daily.current}</h2>
