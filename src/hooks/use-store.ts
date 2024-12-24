@@ -1,5 +1,7 @@
 import { create } from "zustand";
 
+const dataUrl = new URL("/data.json", import.meta.url).href;
+
 type TCardTitle =
     | "Work"
     | "Play"
@@ -41,7 +43,7 @@ export const useStore = create<IStore>()((set) => ({
     cards: [],
     timeframe: "weekly",
     fetchTimeframes: async () => {
-        const response = await fetch("/data.json");
+        const response = await fetch(dataUrl);
         if (!response.ok) return;
         const cards = await response.json();
         console.log(cards);
