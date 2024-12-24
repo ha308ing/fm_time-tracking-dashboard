@@ -73,36 +73,37 @@ const CardContent = styled(Card)`
     }
 `;
 
-const CardContainer = styled(Card)<{ type: TCardType }>`
-    background-image: ${(props) => `url("images/icon-${props.type}.svg")`};
-    background-color: ${(props) => `var(--color-${props.type})`};
+const CardContainer = styled(Card)<{ "data-type": TCardType }>`
+    background-image: ${(props) =>
+        `url("images/icon-${props["data-type"]}.svg")`};
+    background-color: ${(props) => `var(--color-${props["data-type"]})`};
     padding-top: 2.35rem;
     background-position: top -0.3rem right 1.3rem;
     background-size: 4.75rem;
     background-repeat: no-repeat;
     cursor: pointer;
 
-    &[type="work"] {
+    &[data-type="work"] {
         background-position: top -0.7rem right 1rem;
         background-size: 5rem;
     }
 
-    &[type="study"] {
+    &[data-type="study"] {
         background-position: top -0.4rem right 1.1rem;
         background-size: 4.9rem;
     }
 
-    &[type="exercise"] {
+    &[data-type="exercise"] {
         background-position: top 0rem right 1.1rem;
         background-size: 4.9rem;
     }
 
-    &[type="social"] {
+    &[data-type="social"] {
         background-position: top -0.9rem right 0.9rem;
         background-size: 4.6rem;
     }
 
-    &[type="self-care"] {
+    &[data-type="self-care"] {
         background-position: top -0.7rem right 0.9rem;
         background-size: 4.2rem;
     }
@@ -198,7 +199,7 @@ export const CardTracking: React.FC<TCardProps> = memo(({ card }) => {
     const { daily, monthly, weekly } = normalizeTimeframes(card.timeframes);
 
     return (
-        <CardContainer type={type}>
+        <CardContainer data-type={type}>
             <CardContent>
                 <CardHeading>
                     <span>{title}</span>
