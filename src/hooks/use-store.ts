@@ -38,7 +38,7 @@ interface IStore {
 export const useStore = create<IStore>()((set) => ({
     profile: {
         name: "Jeremy Robson",
-        image: "/images/image-jeremy.png",
+        image: "images/image-jeremy.png",
     },
     cards: [],
     timeframe: "weekly",
