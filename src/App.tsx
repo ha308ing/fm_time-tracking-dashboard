@@ -5,18 +5,29 @@ import { useStore } from "@/hooks";
 
 const Main = styled.main`
     display: grid;
-    grid-template:
-        "profile card card card" auto
-        "profile card card card" auto / 1fr 1fr 1fr 1fr;
-    gap: 1.9rem;
-    max-width: 1110px;
+    gap: 1.5rem;
+    grid-template-columns: auto;
+    padding: 5rem 1.5rem;
+
+    @media (width >= 1110px) {
+        grid-template:
+            "profile card card card" auto
+            "profile card card card" auto / 1fr 1fr 1fr 1fr;
+        gap: 1.9rem;
+        max-width: 1110px;
+        padding: 0;
+    }
 `;
 
 const CardProfileStyled = styled(CardProfile)`
-    grid-area: profile;
     display: grid;
-    grid-template-rows: 68.4% auto;
+    grid-template-rows: auto auto;
     border-radius: 1.5rem;
+
+    @media (width >= 1110px) {
+        grid-template-rows: 68.4% auto;
+        grid-area: profile;
+    }
 `;
 
 export const App = () => {

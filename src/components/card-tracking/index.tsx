@@ -25,18 +25,25 @@ const CardContent = styled(Card)`
     background-color: var(--color-card-background);
     display: flex;
     flex-flow: column nowrap;
-    padding: 1.8rem 1.85rem 2rem;
+    padding: 1.8rem 1.5rem 1.3rem;
     color: var(--color-card);
     height: 100%;
 
     ${CardHeading} {
-        margin-bottom: 1.5rem;
+        margin-bottom: 0.35rem;
     }
 
     h2 {
-        font-size: 3.5rem;
+        font-size: 2rem;
         margin-bottom: 0.5rem;
         font-weight: 300;
+    }
+
+    & > div {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
     }
 
     [data-value="daily"] & [data-value="monthly"],
@@ -47,12 +54,29 @@ const CardContent = styled(Card)`
     [data-value="monthly"] & [data-value="weekly"] {
         display: none;
     }
+
+    @media (width>=1110px) {
+        padding: 1.8rem 1.85rem 2rem;
+
+        ${CardHeading} {
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 3.5rem;
+        }
+
+        & > div {
+            flex-flow: column nowrap;
+            align-items: flex-start;
+        }
+    }
 `;
 
 const CardContainer = styled(Card)<{ type: TCardType }>`
     background-image: ${(props) => `url("images/icon-${props.type}.svg")`};
     background-color: ${(props) => `var(--color-${props.type})`};
-    padding-top: 2.8rem;
+    padding-top: 2.35rem;
     background-position: top -0.3rem right 1.3rem;
     background-size: 4.75rem;
     background-repeat: no-repeat;
@@ -85,6 +109,10 @@ const CardContainer = styled(Card)<{ type: TCardType }>`
 
     &:hover ${CardContent} {
         background-color: var(--color-card-hover-background);
+    }
+
+    @media (width>=1110px) {
+        padding-top: 2.8rem;
     }
 `;
 
@@ -153,6 +181,11 @@ const MenuButton = styled.button`
 const CardSubtext = styled.div`
     color: var(--color-pale-blue);
     font-size: 0.9375rem;
+    margin-block-start: -8px;
+
+    @media (width>=1110px) {
+        margin-block-start: 0;
+    }
 `;
 
 interface TCardProps {

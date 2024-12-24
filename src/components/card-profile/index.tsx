@@ -7,15 +7,22 @@ import { TimeframeSelector } from "@/components/timeframe-selector";
 const TimeframeSelectorStyled = styled(TimeframeSelector)`
     color: var(--color-desaturated-blue);
     display: flex;
-    flex-flow: column nowrap;
-    gap: 1.2rem;
+    flex-flow: row nowrap;
+    justify-content: space-around;
     font-weight: 300;
 
     font-size: 1.2rem;
     letter-spacing: -0.3px;
     padding-block-start: 1.5rem;
-    padding-inline-start: 2rem;
     border-radius: 0 0 var(--card-border-radius) var(--card-border-radius);
+    padding-block-end: 1.5rem;
+
+    @media (width>=1110px) {
+        justify-content: flex-start;
+        flex-flow: column nowrap;
+        padding-inline-start: 2rem;
+        gap: 1.2rem;
+    }
 `;
 
 interface ICardProfileProps {
@@ -25,26 +32,49 @@ interface ICardProfileProps {
 const ProfileContainer = styled(Card)`
     background-color: var(--color-profile-background);
     color: var(--color-profile);
-    padding: 2.2rem 2rem 2rem;
+    padding: 2rem;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 1.1rem;
+
+    @media (width>=1110px) {
+        flex-flow: column nowrap;
+        gap: 2.5rem;
+        padding: 2.2rem 2rem 2rem;
+        align-items: flex-start;
+    }
 `;
 
 const ProfileImage = styled.img`
     border-radius: 50%;
-    width: 5.25rem;
-    height: 5.25rem;
+    width: 4.3rem;
+    height: 4.3rem;
     display: block;
-    margin-block-end: 2.5rem;
     border: 3px solid white;
     margin-inline-start: -0.2rem;
+
+    @media (width>=1110px) {
+        /* margin-block-end: 2.5rem; */
+        flex-flow: column nowrap;
+        width: 5.25rem;
+        height: 5.25rem;
+    }
 `;
 
 const ProfileName = styled.h1`
-    font-size: 2.4rem;
-    line-height: 1.25;
+    font-size: 1.45rem;
+    line-height: 1;
     letter-spacing: 0.045ch;
     font-weight: 300;
-    margin-block-start: 2px;
     color: var(--color-profile-name);
+    margin-block-start: 6px;
+
+    @media (width>=1110px) {
+        font-size: 2.4rem;
+        line-height: 1.25;
+        margin-block-start: 2px;
+    }
 `;
 
 const CardProfileStyled = styled(Card)`
@@ -64,7 +94,9 @@ export const CardProfile: React.FC<ICardProfileProps> = ({ className }) => {
         <CardProfileStyled className={className}>
             <ProfileContainer>
                 <ProfileImage src={image} />
-                Report for <ProfileName>{name}</ProfileName>
+                <div>
+                    Report for <ProfileName>{name}</ProfileName>
+                </div>
             </ProfileContainer>
             <TimeframeSelectorStyled />
         </CardProfileStyled>

@@ -8,12 +8,18 @@ const List = styled.ul``;
 const ListItem = styled.li`
     cursor: pointer;
     color: var(--color-pale-blue);
+    text-align: center;
+    width: 100%;
 
     [data-value="daily"] &[data-value="daily"],
     [data-value="weekly"] &[data-value="weekly"],
     [data-value="monthly"] &[data-value="monthly"],
     &:hover {
         color: var(--color-timeframe-hover);
+    }
+
+    @media (width >= 1110px) {
+        text-align: start;
     }
 `;
 
